@@ -40,7 +40,7 @@ JavaScript framework for building dynamic, fast and scalable HTML applications.
 - **controllers.js** - application module controllers definition
 - **style.css** - stylesheets for basic visual UI/design improvements
 #### Module settings
-Application has some minor configuration which is defined during application initialization ([app.js](../blob/master/app.js)):
+Application has some minor configuration which is defined during application initialization ([app.js](../master/app.js)):
 - **apiURL:** Puppy Recipe API endpoint to target for search queries [http://www.recipepuppy.com/api/]
 - **apiMinimumQueryLength:** The smallest number of characters needed in input to trigger query to Puppy Recipe endpoint [3]
 
