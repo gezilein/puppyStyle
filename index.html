@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Puppy Style</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers.js"></script>
+  <script src="services.js"></script>
+</head>
+<body>
+  <center>
+    <div class="card w-50">
+      <div class="card-body">
+        <h4 class="card-title">Puppy Style</h4>
+        <h6 class="card-subtitle text-muted">Lightweight Recipe Finder</h6>
+        <div ng-app="puppyStyleApp" ng-controller="puppyController" class="form-group mt-4">
+          <label for="query">Start typing</label>
+          <input id="query" name="query" ng-model="query" ng-change="queryEntry()" class="form-control" placeholder="Recipe name / Ingredient" autocomplete="off" />
+          <small class="form-text text-muted">Enter at least {{minQuery}} characters</small>
+          <div ng-show="recipes.length > 0" class="mt-5">
+            <h6 class="card-subtitle">Recipe list</h6>
+            <ul class="list-group">
+              <li ng-repeat="r in recipes" class="list-group-item" ng-class="{'list-group-item-info': show}" ng-mouseenter="show = true" ng-mouseleave="show = false">
+                <h4>{{ r.title }}</h4>
+                <div class="card" ng-show="show">
+                  <ul class="list-group">
+                    <li ng-repeat="ingredient in r.ingredients.split(', ')" class="list-group-item list-group-item-info">
+                      {{ingredient}}
+                    </li>
+                  </ul>
+                  <a ng-href="{{r.href}}" class="btn btn-success" target="_blank">Go to recipe</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </center>
+</body>
+</html>
